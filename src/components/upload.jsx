@@ -74,7 +74,7 @@ import './styling/upload.css'
       ); 
  
       MedicalDataService.upload(formData) .then(response => {
-        this.props.history.push("/medical");
+        this.props.history.push("/applications");
         window.location.reload();
         
         

@@ -3,6 +3,11 @@ import "bootstrap/dist/css/bootstrap.css";
 import TokenStore from '../services/tokenservice';
 import { Container } from "reactstrap"
 import 'hammerjs';
+import logo from '../logo.svg';
+import Gov from '../assets/SA_GOV.jpg';
+import Covid from '../assets/covid-19.jpg';
+import Drivers from '../assets/Drivers-license.jpg';
+import Germ from '../assets/germ.jpg'
 import MedicalDataService from '../services/dataservice.js'
 import {
     Card, CardImg, CardText, CardBody,
@@ -81,6 +86,8 @@ export default class Home extends Component {
 
             <Container className="container-fluid pr-5 pl-5 pt-5 pb-5">
 
+              
+
 <div className="list row">
           <div className="col-md-8">
             <div className="input-group mb-3">
@@ -104,21 +111,95 @@ export default class Home extends Component {
       </div>
       </div> 
 
-    {this.state.people.map((person, index) => (
-        <div style={{width: "20%"}}>
+      
+      <h1>News and Announcements</h1>
+<Container className="container-fluid pr-2 pl-2 pt-2 pb-2">
+          {/* row 1 - revenue */}
+          <Container className="row" >
+          <Container className="col">
+
+          <div style={{width: "100%"}}>
         <Card >
-          <CardImg top width="80%" src={person.picture_url} alt="Card image cap" height="100px" width="15px"  />
+          <CardImg top width="100%" src={Covid} alt="Card image cap" height="150px" />
           <CardBody>
-    <CardTitle>{person.name}</CardTitle>
-    <CardSubtitle>ID:{person.identification_number}</CardSubtitle>
-    <CardText>Medical Aid:{person.medical_Aid}</CardText>
-            <Button onClick={(e) => this.request(person.id, e)}>Request Access</Button>
-            <Button onClick={(e) => this.clickPerson(person.id, e)}>Access</Button>
+    <CardTitle>Tshwane Government Launch COVID-19 Testing Centres</CardTitle>
+    <CardText>The Tshwane govenrment has launched several COVID-19 testing Centres in Hatfield, Moraleta park, Sliverlakes
+      and.... </CardText>
+            
           </CardBody>
         </Card>
       </div>
-    ))}
-    </Container>
+             
+              </Container>
+          
+
+       
+
+            <Container className="col">
+
+            <div style={{width: "100%"}}>
+        <Card >
+          <CardImg top width="80%" src={Gov} alt="Card image cap" height="150px" />
+          <CardBody>
+    <CardTitle>Gauteng Premier anounces new restrictions</CardTitle>
+    <CardText>The Gauteng Premier The hounorable Thato Polisa has anounced new restrictions in a fight to cure the COVID_19 pandemic... 
+
+    </CardText>
+            
+          </CardBody>
+        </Card>
+      </div>
+             
+              
+              </Container>
+            </Container>
+
+            <Container className="row" >
+          <Container className="col">
+
+          <div style={{width: "100%"}}>
+        <Card >
+          <CardImg top width="100%" src={Drivers} alt="Card image cap" height="150px" />
+          <CardBody>
+    <CardTitle>SA extend expired driver licenses</CardTitle>
+    <CardText>Due to the lockdown enforceed earlier this year The minster of transport has extended the validity of.....</CardText>
+            
+          </CardBody>
+        </Card>
+      </div>
+             
+              </Container>
+          
+
+       
+
+            <Container className="col">
+
+            <div style={{width: "100%"}}>
+        <Card >
+          <CardImg top width="80%" src={Germ} alt="Card image cap" height="150px" />
+          <CardBody>
+    <CardTitle>Tshwane Government Launch COVID-19 Testing Centres</CardTitle>
+    <CardText>The Tshwane govenrment has launched several COVID-19 testing Centres in Hatfield, Moraleta park, Sliverlakes
+      and.... </CardText>
+            
+          </CardBody>
+        </Card>
+      </div>
+             
+              
+              </Container>
+            </Container>
+
+
+
+
+          </Container>
+
+          </Container>
+
+    
+ 
 
           );
       }

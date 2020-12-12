@@ -67,7 +67,7 @@ export default class TicketList extends Component{
             <div className="scrollable">
            
                     <Container style={{ marginTop: 100 }}>
-                      <h2>Tickets</h2>
+                      <h2>My Registered Issues</h2>
                         <TicketTable data={this.state.tickets} 
                         />
                     </Container>

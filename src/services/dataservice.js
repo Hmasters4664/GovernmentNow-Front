@@ -27,12 +27,12 @@ myTickets(){
 ticketArea(area){
     return http.get(`/ticket/area?suburb=${area}`, {headers:{"Authorization": "Bearer "+ TokenStore.getToken()}} );
 }
-myapplications(search){
-    return http.get('/doc/search', {headers:{"Authorization": "Bearer "+ TokenStore.getToken()}} );
+myapplications(){
+    return http.get('/apply/myapplications', {headers:{"Authorization": "Bearer "+ TokenStore.getToken()}} );
 }
 
 dashboard(){
-    return http.get(`/doc/dashboard?pk=${localStorage.getItem("PATIENT_ID")}`, {headers:{"Authorization": "Bearer "+ TokenStore.getToken()}} );
+    return http.get('/dashboard/dashboard');
 }
 
 images(){
@@ -52,7 +52,7 @@ request(id){
 }
 
 upload(fileData){
-    return http.post(`/doc/patientUpload?pk=${localStorage.getItem("PATIENT_ID")}`,fileData, {headers:{"Authorization": "Bearer "+ TokenStore.getToken()}} );
+    return http.post(`/apply/upload?pk=${localStorage.getItem("upload_id")}`,fileData, {headers:{"Authorization": "Bearer "+ TokenStore.getToken()}} );
 }
 
 getProfile(){
@@ -60,8 +60,12 @@ getProfile(){
 }
 
 
-updateProfile(data){
-    return http.put('/doc/profile', data ,{headers:{"Authorization": "Bearer "+ TokenStore.getToken()}} );
+registerIssue(data){
+    return http.post('/ticket/create', data ,{headers:{"Authorization": "Bearer "+ TokenStore.getToken()}} );
+}
+
+createApplication(data){
+    return http.post('/apply/new', data ,{headers:{"Authorization": "Bearer "+ TokenStore.getToken()}} );
 }
 
 

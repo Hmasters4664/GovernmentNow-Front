@@ -7,7 +7,7 @@ export default class LogOut extends Component {
 
     componentDidMount() {
 
-        localStorage.removeItem("medic_token");
+        localStorage.removeItem("government_token");
         this.props.history.push("/login");
         window.location.reload();
       }

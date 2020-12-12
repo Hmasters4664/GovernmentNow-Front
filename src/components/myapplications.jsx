@@ -5,6 +5,8 @@ import {XYPlot, DiscreteColorLegend, XAxis, YAxis, HorizontalGridLines, Vertical
 import "bootstrap/dist/css/bootstrap.css";
 import TokenStore from '../services/tokenservice';
 import 'hammerjs';
+import logo from '../logo.svg';
+import Gov from '../assets/sa2.jpg'
 import TableContainer from "./tables/tablecontainer"
 import './styling/medicalrecords.css';
 import MedicalDataService from '../services/dataservice.js'
@@ -19,6 +21,7 @@ import {
     CardText,
     CardBody,
     CardTitle,
+    CardSubtitle, Button
   } from 'reactstrap';
 
 
@@ -27,7 +30,7 @@ export default class Applications extends Component{
     constructor(props) {
         super(props);
         this.state = {
-          tickets:[],
+          applications:[],
          };
     }
 
@@ -38,16 +41,23 @@ export default class Applications extends Component{
             window.location.reload();
           }
   
-          this.retrieveAll()
+          this.get()
           
         
       }
 
-      retrieveAll() {
-        MedicalDataService.myTickets()
+      upload(id)
+      {
+        this.props.history.push("/upload");
+        localStorage.setItem("upload_id",id);
+            window.location.reload();
+      }
+
+      get() {
+        MedicalDataService.myapplications()
         .then(response => {
           this.setState({
-            tickets: response.data,
+            applications: response.data,
           });
           //console.log(response.data.Profile);
         })
@@ -64,14 +74,25 @@ export default class Applications extends Component{
          
         return (
           <Container className="container-fluid pr-5 pl-5 pt-5 pb-5">
-            <div className="scrollable">
            
-                    <Container style={{ marginTop: 100 }}>
-                      <h2>Tickets</h2>
-                        <TicketTable data={this.state.tickets} 
-                        />
-                    </Container>
-            </div>
+            {this.state.applications.map((application, index) => (
+        <div>
+        <Card >
+        
+          <CardBody>
+          
+    <CardTitle>{application.name}</CardTitle>
+    <CardSubtitle>Application Refrence: {application.id}</CardSubtitle>
+    <CardText>Application Type: {application.type_name}</CardText>
+    <CardText>Application Status: {application.status_name}</CardText>
+  {
+      application.has_docs ? <Button color="danger">View</Button> : <Button color="danger" onClick={() => this.upload(application.id)}>Upload Documents</Button>
+  }
+          </CardBody>
+        </Card>
+      </div>
+    ))}
+            
             </Container>
 
         );

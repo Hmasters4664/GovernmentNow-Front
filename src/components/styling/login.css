@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 .background {
-  background: #56EE13 !important;
+  background: #C70039 !important;
   position:absolute;
   top:0px;
   right:0px;
@@ -45,7 +45,7 @@ body, html, .App, #root, .auth-wrapper {
 }
 
 .auth-wrapper .form-control:focus {
-  border-color: #046E00;
+  border-color: #C70039;
   box-shadow: none;
 }
 
@@ -83,7 +83,7 @@ body, html, .App, #root, .auth-wrapper {
   }
 
   .avatar{
-    background: #046E00;
+    background: #C70039;
     position: absolute;
     align-self: 'center';
   }
